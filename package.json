@@ -10,7 +10,7 @@
     "server": "nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Sandeep Raveesh",
+  "author": "Ankush Khurana",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
