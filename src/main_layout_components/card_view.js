@@ -41,7 +41,7 @@ export default class CardView extends React.Component{
                 }
                 action={
                     <IconButton>
-                    <MoreVertIcon />
+                        <MoreVertIcon />
                     </IconButton>
                 }
                 title={this.props.title}

@@ -31,7 +31,17 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    open: true
+    open: true,
+    hot: true,
+    disableHostCheck: true,
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Max-Age': '3600',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-id, Content-Length, X-Requested-With',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+      },
   },
   plugins: [
     new CleanWebpackPlugin([outputDirectory]),

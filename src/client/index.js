@@ -3,12 +3,12 @@ import ReactDom from 'react-dom';
 import Header from '../main_layout_components/header'
 import CardView from '../main_layout_components/card_view'
 import { Grid } from '@material-ui/core';
-class MainLayout extends React.Component{
+import Axios from 'axios';
+import OrderViewLayout from '../main_layout_components/orders_view'
+class TopGrid extends React.Component{
     render(){
         return(
-            <div>
-                <Header></Header>
-                <Grid container spacing={32}>
+                <Grid container spacing={32} style={{marginTop: 20}}>
                     <Grid item xs>    
                         <div style={{marginTop: 30}}> 
                             <CardView image="../public/stock-image.jpg" title="Company Stock" description="  
@@ -40,9 +40,34 @@ class MainLayout extends React.Component{
                         </div>
                     </Grid>
                 </Grid>
+        )
+    }
+}
+
+class Central_Info_Grid extends React.Component{
+    constructor(props)
+    {
+        super(props);
+    }
+    render(){
+        return(
+            <div>
+            <OrderViewLayout></OrderViewLayout>
             </div>
         )
     }
 }
 
-ReactDom.render(<MainLayout/>,document.getElementById("root"));
+class MainLayout extends React.Component{
+    render(){
+        return(
+            <div style={{overflowX: 'hidden',overflowY: 'hidden'}}>
+                <Header></Header>
+                <TopGrid></TopGrid>
+                <Central_Info_Grid></Central_Info_Grid>
+            </div>
+        )
+    }
+}
+
+ReactDom.render(<MainLayout></MainLayout>,document.getElementById("root"));
