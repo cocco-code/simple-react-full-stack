@@ -65,7 +65,7 @@ class SearchProductComponent extends React.Component{
                     </IconButton>}> 
                 </CardHeader>
                 <div style={{marginTop: 65, minHeight:570,maxHeight: 570,overflowY: 'scroll'}}>
-                    {this.props.searched_data.data !== undefined ? this.props.searched_data.data.map(object => ( 
+                    {(this.props.searched_data.data !== undefined && typeof(this.props.searched_data.data) !== 'string') ? this.props.searched_data.data.map(object => ( 
                      <div key={object.product_id}>    
                     <SearchComponentItem name={object.Name} id={object.product_id}>
                     </SearchComponentItem> <Divider style={{marginLeft: 5, marginRight: 5, marginTop: 5}}/> 
