@@ -93,7 +93,7 @@ export default class ButtonAppBar extends React.Component{
               <List>
                 {[
                     <ListItem button key="Notify Users">
-                        <ListItemIcon style={{height: 10, width: 10}}>{<Notifications></Notifications>}</ListItemIcon>
+                        <ListItemIcon style={{height: 10, width: 10}}>{<Notifications />}</ListItemIcon>
                         <ListItemText primary={<Typography style={{marginTop: 15}}>{'Notify Users'}</Typography>}></ListItemText>
                     </ListItem>,
                     <ListItem button key="Promoters">
@@ -117,7 +117,7 @@ export default class ButtonAppBar extends React.Component{
                       <ListItemText primary={<Typography style={{marginTop: 15}}>{'Manage New Products'}</Typography>}></ListItemText>
                     </ListItem>,
                     <ListItem button key="Manage Prebookings">
-                      <ListItemIcon style={{height: 10, width: 10}}>{Notifications}</ListItemIcon>
+                      <ListItemIcon style={{height: 10, width: 10}}>{<NewProduct/>}</ListItemIcon>
                       <ListItemText primary={<Typography style={{marginTop: 15}}>{'Manage Prebookings'}</Typography>}></ListItemText>
                     </ListItem>,
                     <ListItem button key="Manage My Inventory">
@@ -158,21 +158,16 @@ export default class ButtonAppBar extends React.Component{
           );
 
       return(
-        <AppBar position="fixed">
-            <Toolbar variant="dense">
+            <div>
             <IconButton className="menuButton" color="inherit" aria-label="Menu">
                 <MenuIcon onClick={this.toggleDrawer("left",true)}/>
             </IconButton>
-            <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+            <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)} >
                 <div tabIndex={0} role="button" onClick={this.toggleDrawer('left', false)} onKeyDown={this.toggleDrawer('left', false)}>
                     {sideList}
                 </div>
             </Drawer>
-            <Typography variant="subheading" color="inherit" >
-                Khurana Sales Buziness
-            </Typography>
-            </Toolbar>
-        </AppBar>
+            </div>
       );
     }
   }

@@ -3,8 +3,9 @@ import ReactDom from 'react-dom';
 import Header from '../main_layout_components/header'
 import CardView from '../main_layout_components/card_view'
 import { Grid } from '@material-ui/core';
-import Axios from 'axios';
 import OrderViewLayout from '../main_layout_components/orders_view'
+import SearchAppBar from '../main_layout_components/search_app_bar'
+import SearchProductComponent from '../main_layout_components/search_list_component'
 class TopGrid extends React.Component{
     render(){
         return(
@@ -59,15 +60,30 @@ class Central_Info_Grid extends React.Component{
 }
 
 class MainLayout extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {products_list_visibility: false, products_recieved: []};
+    }
     render(){
+        var data_recieved=[];
+        const searchChangesCallback= (res) => {
+            console.log("i am in callback for data change");
+            console.log("data recieved"+res.data);
+            data_recieved = res;
+            this.setState({products_recieved: data_recieved, products_list_visibility: (typeof(res.data) === 'string') ? false : true});
+        }
         return(
             <div style={{overflowX: 'hidden',overflowY: 'hidden'}}>
-                <Header></Header>
+                <div id="content" style={{marginTop: 65, position: "fixed", right: 10, float: "right", zIndex: 20}}>
+                    {<SearchProductComponent visible={this.state.products_list_visibility} searched_data = {this.state.products_recieved}></SearchProductComponent> }
+                </div>
+                <SearchAppBar search_callback={searchChangesCallback}></SearchAppBar>
                 <TopGrid></TopGrid>
                 <Central_Info_Grid></Central_Info_Grid>
             </div>
         )
     }
 }
+
 
 ReactDom.render(<MainLayout></MainLayout>,document.getElementById("root"));

@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableHead from '@material-ui/core/TableHead';
 import Axios from 'axios';
 import TablePagination from '@material-ui/core/TablePagination'
+import color from '@material-ui/core/colors/grey';
 
 export default class orders_view_layout extends React.Component{
     constructor(props)
@@ -22,6 +23,17 @@ export default class orders_view_layout extends React.Component{
         }
     }
 
+    shouldComponentUpdate(props)
+    {
+        if(props === undefined)
+        {
+            return false 
+        }
+        else
+        {
+            return true
+        }
+    }
    componentDidMount(){
     Axios.post(`http://khuranasales.co.in/work/get_orders_desktop.php`,this.data,{ crossDomain: true , headers: {"Content-Type": "application/json",'Access-Control-Allow-Origin': '*'}}).then(res => {
         console.log(res);    
@@ -47,19 +59,19 @@ export default class orders_view_layout extends React.Component{
                         <Table className={"orders_table"}>
                             <TableHead>
                             <TableRow>
-                                <TableCell>Product Name</TableCell>
-                                <TableCell numeric>Total Count</TableCell>
-                                <TableCell numeric>Sale Price</TableCell>
-                                <TableCell numeric>Order Number</TableCell>
-                                <TableCell numeric>Invoice Status</TableCell>
-                                <TableCell numeric>Paytm Payment</TableCell>
-                                <TableCell numeric>Finance Payment</TableCell>
-                                <TableCell numeric>Discount Amount</TableCell>
-                                <TableCell numeric>Credit Payment</TableCell>
-                                <TableCell numeric>Cheque Payment</TableCell>
-                                <TableCell numeric>Cash Payment</TableCell>
-                                <TableCell numeric>Card Payment</TableCell>
-                                <TableCell numeric>Batches Selected</TableCell>
+                                <TableCell style={{color: "inherit"}}>Product Name</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Total Count</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Sale Price</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Order Number</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Invoice Status</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Paytm Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Finance Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Discount Amount</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Credit Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Cheque Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Cash Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Card Payment</TableCell>
+                                <TableCell numeric style={{color: "blue"}}>Batches Selected</TableCell>
                            
                             </TableRow>
                             </TableHead>
