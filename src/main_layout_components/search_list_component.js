@@ -1,12 +1,16 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
 import Paper from '@material-ui/core/Paper'
+import Card from '@material-ui/core/Card'
 import './animation.css';
-
+import { CardHeader, Typography, CardContent, CardActions } from '@material-ui/core';
+import SearchComponentItem from './search_list_component_unit';
+import {List, ListItem, Divider, IconButton} from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close'
 class SearchProductComponent extends React.Component{
     constructor (props) {
         super(props);
         this.state = {visible: this.props.visible, searched_data: this.props.searched_data}
+        this.changeViewStateToInvisible = this.changeViewStateToInvisible.bind(this)
     }
 
     componentWillReceiveProps(nextProps){
@@ -45,9 +49,30 @@ class SearchProductComponent extends React.Component{
         return true;
     }
     
+    changeViewStateToInvisible = () =>
+    {
+        this.setState({...this.state, visible: false})
+    }
     render() {
         return (
-            <Paper className={this.state.visible? 'fadeIn': 'fadeOut'} style={{ background: "#ffffff", width: 320,height: 600, zIndex: 50,}}/>    
+            <div>
+            <Card className={this.state.visible? 'fadeIn': 'fadeOut'} raised={true} style={{ background: "#ffffff", width: 360,minHeight:650, maxHeight: 650, zIndex: 50,}}>
+                <CardHeader style={{width: 320,background: '#ffffff',position: 'fixed'}}
+                title={<Typography> Khurana Sales Stock Search </Typography>} subheader={`Items found    ${ this.props.searched_data.data===undefined ? 0 : this.props.searched_data.data.length}`}
+                action={
+                    <IconButton style={{float: 'right'}}>
+                      <CloseIcon onClick={this.changeViewStateToInvisible}/>
+                    </IconButton>}> 
+                </CardHeader>
+                <div style={{marginTop: 65, minHeight:570,maxHeight: 570,overflowY: 'scroll'}}>
+                    {this.props.searched_data.data !== undefined ? this.props.searched_data.data.map(object => ( 
+                     <div key={object.product_id}>    
+                    <SearchComponentItem name={object.Name} id={object.product_id}>
+                    </SearchComponentItem> <Divider style={{marginLeft: 5, marginRight: 5, marginTop: 5}}/> 
+                    </div>)) : ""}
+                </div>
+            </Card>
+            </div>
         );
     }
 }
