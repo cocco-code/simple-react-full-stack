@@ -6,6 +6,8 @@ import { Grid } from '@material-ui/core';
 import OrderViewLayout from '../main_layout_components/orders_view'
 import SearchAppBar from '../main_layout_components/search_app_bar'
 import SearchProductComponent from '../main_layout_components/search_list_component'
+import MainChartContainerPart1 from '../main_layout_components/main_chart_layout_part1';
+
 class TopGrid extends React.Component{
     render(){
         return(
@@ -80,6 +82,7 @@ class MainLayout extends React.Component{
                 <SearchAppBar search_callback={searchChangesCallback}></SearchAppBar>
                 <TopGrid></TopGrid>
                 <Central_Info_Grid></Central_Info_Grid>
+                <MainChartContainerPart1></MainChartContainerPart1>
             </div>
         )
     }

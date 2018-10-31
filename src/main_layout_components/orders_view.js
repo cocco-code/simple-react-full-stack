@@ -1,18 +1,13 @@
 import React, { Children } from 'react';
-import ReactDom from 'react-dom';
 import Card from '@material-ui/core/Card'
 import { CardHeader, IconButton, Typography, CardContent } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Autorenew';
-import Avatar from '@material-ui/core/Avatar';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TableHead from '@material-ui/core/TableHead';
 import Axios from 'axios';
-import TablePagination from '@material-ui/core/TablePagination'
-import color from '@material-ui/core/colors/grey';
-
 export default class orders_view_layout extends React.Component{
     constructor(props)
     {
@@ -50,8 +45,11 @@ export default class orders_view_layout extends React.Component{
             <div> 
                 <Card style={{marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10}} >
                     <CardHeader  
-                        action={<IconButton style={{marginTop: 10}}
-                        ><RefreshIcon></RefreshIcon></IconButton>}
+                        action={
+                        <IconButton style={{marginTop: 10}}>
+                        <RefreshIcon></RefreshIcon>
+                        </IconButton>
+                        }
                         title={<Typography> Khurana Sales Orders </Typography>}
                         subheader={date}>
                     </CardHeader>
