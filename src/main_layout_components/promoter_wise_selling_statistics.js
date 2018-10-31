@@ -80,9 +80,12 @@ export default class PromoterSellingComponent extends React.Component{
                     subheader={date+`   Total Promoters: ${this.state.chartData.labels.length}`}>
                         </CardHeader>
                     <Bar data={this.state.chartData}
-                         options={{scales: {
+                         options={{ tooltips: {enabled: true, mode: 'label'}, scales: {
                             xAxes: [{
-                                label: false
+                                ticks: {
+                                    autoSkip: false
+                                },
+                                label: true
                             }]},maintainAspectRatio: true, responsive: true,title: {display: true, text: "Selling Statistics"}, }}>
                         </Bar>
                 </Card>
