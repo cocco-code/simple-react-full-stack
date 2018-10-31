@@ -67,7 +67,7 @@ class SearchProductComponent extends React.Component{
                 <div style={{marginTop: 65, minHeight:570,maxHeight: 570,overflowY: 'scroll'}}>
                     {(this.props.searched_data.data !== undefined && typeof(this.props.searched_data.data) !== 'string') ? this.props.searched_data.data.map(object => ( 
                      <div key={object.product_id}>    
-                    <SearchComponentItem name={object.Name} id={object.product_id}>
+                    <SearchComponentItem name={object.Name} id={object.product_id} mrp_price={object.mrp} mop_price={object.mop} ks_price={object.ksprice} stock={object.stock}>
                     </SearchComponentItem> <Divider style={{marginLeft: 5, marginRight: 5, marginTop: 5}}/> 
                     </div>)) : ""}
                 </div>
