@@ -11,6 +11,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ButtonAppBar from '../main_layout_components/header';
 import Axios from 'axios';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
 
 const styles = theme => ({
   root: {
@@ -114,7 +121,18 @@ function SearchAppBar(props) {
           <Typography className={classes.title} variant="subtitle1" color="inherit" noWrap>
             Khurana Sales Buziness
           </Typography>
-          <div className={classes.grow} />
+          <div className={classes.sectionDesktop} style={{marginLeft: 50}}>
+            <IconButton style={{marginLeft: 10, marginRight: 10}} color="inherit">
+                <MailIcon />
+            </IconButton>
+            <IconButton style={{marginLeft: 10, marginRight: 10}} color="inherit">
+                <NotificationsIcon />
+            </IconButton>
+            <IconButton style={{marginLeft: 10, marginRight: 10}} color="inherit">
+                <AccountCircle />
+            </IconButton>
+          </div>
+          <div className={classes.grow}/>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

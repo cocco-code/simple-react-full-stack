@@ -34,6 +34,9 @@ module.exports = {
     open: true,
     hot: true,
     disableHostCheck: true,
+    historyApiFallback: {
+      index: 'index.html'
+    },
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': 'true',
@@ -44,10 +47,10 @@ module.exports = {
       },
   },
   plugins: [
-    new CleanWebpackPlugin([outputDirectory]),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: './public/favicon.ico'
-    })
+    }),
+    // new CleanWebpackPlugin([outputDirectory]), 
   ]
 };

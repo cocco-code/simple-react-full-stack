@@ -55,7 +55,7 @@ export default class CardView extends React.Component{
                 style={styles.media}
                 />
                 <CardContent>
-                <Typography gutterBottom variant="h6" component="h2">
+                <Typography gutterBottom variant="subtitle1" component="h2">
                    {this.props.title}
                 </Typography>
                 <Typography component="p">
