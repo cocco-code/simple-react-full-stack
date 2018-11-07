@@ -8,14 +8,15 @@ export default class LocationWiseContainer extends React.Component
     {
         super(props);
         this.state = {
-            dataReceivedMain: {}
+            dataReceivedMain: {},
+            dataFromChildRenderable: {}
         }
     }
     componentWillReceiveProps(receivedProps)
     {
         console.log("main layout");
         console.log(receivedProps);
-        this.setState({
+        this.setState({...this.state,
             dataReceivedMain: receivedProps
         })
     }
@@ -24,16 +25,22 @@ export default class LocationWiseContainer extends React.Component
         console.log("tab main container component update called");
         return true;
     }
+    myCallback = (dataFromChild) => {
+        console.log("callback called from child to parent")
+        console.log(dataFromChild);
+        this.setState({...this.state, dataFromChildRenderable: dataFromChild})
+    }
+
     render()
     {
         return(
             <div>
                 <Grid container spacing={32}>
                     <Grid item xs={6}>
-                        <DynamicItemsList dataTransferable={this.state.dataReceivedMain}/>
+                        <DynamicItemsList dataTransferable={this.state.dataReceivedMain} callbackFromParent={this.myCallback}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <LineChartComponent />
+                        <LineChartComponent dataToRender={this.state.dataFromChildRenderable}/>
                     </Grid>
                 </Grid>
             </div>
