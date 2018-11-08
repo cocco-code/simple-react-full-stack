@@ -2,9 +2,26 @@ import React from 'react';
 import { Bar }from 'react-chartjs-2';
 import { Grid, Card, CardHeader, Typography, CardContent } from '@material-ui/core';
 import Axios from 'axios';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import LabelImportant from '@material-ui/icons/LabelImportant'
+
+const styles = theme => ({
+    root: {
+      width: '100%',
+      maxWidth: 600,
+      maxHeight: 400,
+      overflowY: 'auto',
+      padding: '15px',
+      marginTop: '20px',
+      backgroundColor: theme.palette.background.paper,
+    },
+  });
+  
 export default class PromoterSellingComponent extends React.Component{
-    
-    
     constructor(props)
     {
         function dynamicColors() {
@@ -81,6 +98,32 @@ export default class PromoterSellingComponent extends React.Component{
                         </CardHeader>
                     <Grid container spacing={32}>
                         <Grid item xs={6}>
+                        <div className = {styles.root} style={{ width: '100%',
+                            maxWidth: 600,
+                            maxHeight: 400,
+                            overflowY: 'auto',
+                            padding: '10px',
+                            marginTop: '5px',
+                            marginBottom: '20px'}}>
+                            <List container='nav'> 
+                                {this.state.chartData.labels.map((element,index) => {
+                                    return(
+                                        <ListItem
+                                        button
+                                        selected={this.state.selectedIndex === index}>
+                                        <ListItemIcon>
+                                        <LabelImportant />
+                                        </ListItemIcon>
+                                        <ListItemSecondaryAction style={{marginRight: 20}}>
+                                            <Typography>{"Total "+this.state.chartData.datasets[0].data[index]+" Orders Completed "}</Typography>
+                                        </ListItemSecondaryAction>
+                                        <ListItemText primary={element} secondary={"( Promoter )"} />
+                                        </ListItem>
+                                    );
+                                })
+                                }
+                            </List>
+                        </div>
                         </Grid>
                         <Grid item xs={6}>
                             <Bar data={this.state.chartData}
