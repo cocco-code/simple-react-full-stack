@@ -171,7 +171,7 @@ class DynamicItemsList extends React.Component {
                           <ListItemSecondaryAction style={{marginRight: 20}}>
                             <Typography>{"Total Received: " + data_renderable[element].length+ " Orders"}</Typography>
                             </ListItemSecondaryAction>
-                          <ListItemText primary={element} />
+                          <ListItemText primary={<Typography>{element}</Typography>} />
                         </ListItem>   
                       )
                })}
@@ -196,7 +196,7 @@ class DynamicItemsList extends React.Component {
                         <ListItemSecondaryAction style={{marginRight: 20}}>
                             <Typography>{"Total Sold: " + data_products[element.product_name].length+ " Units"}</Typography>
                           </ListItemSecondaryAction>
-                        <ListItemText primary={element.product_name} secondary={"("+element.batch+")"} />
+                        <ListItemText primary={<Typography>{element.product_name}</Typography>} secondary={"("+element.batch+")"} />
                       </ListItem>
                         ); 
                     })
@@ -222,7 +222,7 @@ class DynamicItemsList extends React.Component {
                         <ListItemSecondaryAction style={{marginRight: 20}}>
                             <Typography>{element.date_sold}</Typography>
                           </ListItemSecondaryAction>
-                        <ListItemText primary={element.batch} secondary={"("+element.product_name+")"} />
+                        <ListItemText primary={<Typography>{element.batch}</Typography>} secondary={"("+element.product_name+")"} />
                       </ListItem>
                         ); 
                     })

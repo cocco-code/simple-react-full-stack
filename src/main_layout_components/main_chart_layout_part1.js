@@ -10,14 +10,10 @@ class MainChartContainerPart1 extends React.Component{
     }
     render(){
         return(
-            <Grid container spacing={32} style={{marginTop: 20}}>
-                <Grid item xs={6}>
-                    <BrandWiseSellingComponent></BrandWiseSellingComponent>
-                </Grid>
-                <Grid item xs={6}>
-                    <PromoterSellingComponent></PromoterSellingComponent>
-                </Grid>
-            </Grid>
+            <div>
+                <BrandWiseSellingComponent></BrandWiseSellingComponent>
+                <PromoterSellingComponent></PromoterSellingComponent>
+            </div>
         )
     }
 }

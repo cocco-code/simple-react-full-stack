@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar }from 'react-chartjs-2';
-import { Card, CardHeader, Typography, CardContent } from '@material-ui/core';
+import { Grid, Card, CardHeader, Typography, CardContent } from '@material-ui/core';
 import Axios from 'axios';
 export default class PromoterSellingComponent extends React.Component{
     
@@ -79,16 +79,22 @@ export default class PromoterSellingComponent extends React.Component{
                     <CardHeader title={<Typography>Khurana Sales Promoter Selling Statistics</Typography>}
                     subheader={date+`   Total Promoters: ${this.state.chartData.labels.length}`}>
                         </CardHeader>
-                    <Bar data={this.state.chartData}
-                         options={{ tooltips: {enabled: true, mode: 'label'}, scales: {
-                            xAxes: [{
-                                ticks: {
-                                    autoSkip: false
-                                },
-                                label: true
-                            }]},maintainAspectRatio: true, responsive: true,title: {display: true, text: "Selling Statistics"}, }}>
-                        </Bar>
-                </Card>
+                    <Grid container spacing={32}>
+                        <Grid item xs={6}>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Bar data={this.state.chartData}
+                            options={{ tooltips: {enabled: true, mode: 'label'}, scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        autoSkip: false
+                                    },
+                                    label: true
+                                }]},maintainAspectRatio: true, responsive: true,title: {display: true, text: "Selling Statistics"}, }}>
+                            </Bar>
+                        </Grid>
+                    </Grid>
+                    </Card>
             </div>
         )
     }
