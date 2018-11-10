@@ -2,6 +2,7 @@ const express = require('express');
 const os = require('os');
 var bodyParser = require('body-parser');
 const app = express();
+var http = require('http').Server(app);
 var webpack = require('webpack');
 var config = require('/home/amura/simple-react-full-stack/webpack.config.js');
 var compiler = webpack(config);
@@ -26,16 +27,13 @@ app.use(function(req, res, next) {
     next();
   });
 
-  app.use('*', function (req, res, next) {
-    var filename = path.join(compiler.outputPath,'index.html');
-    compiler.outputFileSystem.readFile(filename, function(err, result){
-      if (err) {
-        return next(err);
-      }
-      res.set('content-type', 'text/html')
-      res.send(result);
-      res.end();
-    });
+  app.use('/dashboard', function (req, res, next) {
+    res.sendFile(path.join('/home/amura/simple-react-full-stack/public/', 'index.html'));
   });
 
-  app.listen(3000, () => console.log('Listening on port 3000!'));
+  app.use('/entry', function (req, res, next) {
+    res.sendFile(path.join('/home/amura/simple-react-full-stack/public/', 'entry.html'));
+  });
+
+  var port = process.env.PORT || 3000 
+  app.listen(port, () => console.log('Listening on port 3000!'));

@@ -30,7 +30,7 @@ function chartData(receivedProps) {
     }
     else
     {
-        const generatedLabel = receivedProps.dataToRender.chart_type === 'date' ? "Date Wise Sale Chart For This Location" : "Product Wise Sale Chart For This Location"
+        const generatedLabel = receivedProps.dataToRender.chart_type === 'date' ? "Date Statistics" : "Products Statistics"
         if(receivedProps.dataToRender.chart_type === 'date')
         {
             const keys = Object.keys(receivedProps.dataToRender.data);  
@@ -126,22 +126,34 @@ function chartData(receivedProps) {
         return (
           <div style={styles.graphContainer}>
                 <Bar data={this.state.chartdata}
-                  options={{ barThickness: 'flex',showAllTooltips: true,tooltips: {enabled: true, mode: 'index'},  scales: {
+                  options={{ legend:{
+                  labels:{
+                      fontColor: 'black'
+                  }}, barThickness: 'flex',showAllTooltips: true,tooltips: {enabled: true, mode: 'index'},  scales: {
                     yAxes: [{
+                        display: true,
                         ticks: {
                             beginAtZero: true,
-                            barPercentage: 0.5
-                        }
+                            fontColor: 'red',
+                            autoSkip: true,
+                            maxTicksLimit: 10
+                        },
+                        gridLines: {
+                            drawBorder: true,
+                        },
+
                     }],
                     xAxes: [{
+                        display: true,
                         ticks: {
-                            autoSkip: false
+                            autoSkip: false,
+                            fontColor: 'black',
+                            fontSize: '10'                            
                         },
                         label: true
                     }]
                 },elements: {
                     rectangle: {
-                      borderSkipped: 'left',
                     }
                   },maintainAspectRatio: true, responsive: true,title: {display: true, text: "Selling Statistics"}, }}>
                 </Bar>
