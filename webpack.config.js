@@ -5,10 +5,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const outputDirectory = 'dist';
 
 module.exports = {
-  entry: './src/client/index.js',
+  entry: 
+  {
+   dashboard:  './src/client/index.js',
+   entry: './src/client/entry.js',
+  },
   output: {
     path: path.join(__dirname, outputDirectory),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -32,15 +36,21 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
-    proxy: {
-      '/api': 'http://localhost:8080'
-    }
+    hot: true,
+    disableHostCheck: true,
+    historyApiFallback: {
+      index: 'index.html'
+    },
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Max-Age': '3600',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-id, Content-Length, X-Requested-With',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+      },
   },
   plugins: [
-    new CleanWebpackPlugin([outputDirectory]),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      favicon: './public/favicon.ico'
-    })
+    // new CleanWebpackPlugin([outputDirectory]), 
   ]
 };

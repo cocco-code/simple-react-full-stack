@@ -8,14 +8,30 @@
     "start": "npm run build && node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "babel": "babel src -d views"
   },
   "author": "Ankush Khurana",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.3.1",
+    "@material-ui/icons": "^3.0.1",
+    "axios": "^0.18.0",
+    "chart.js": "^2.7.3",
     "express": "^4.16.3",
+    "express-react-views": "^0.10.5",
+    "history": "^4.7.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-swipeable-views": "^0.13.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
